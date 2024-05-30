@@ -9,10 +9,6 @@ export const accountSchema = z.object({
 
 export type Account = z.infer<typeof accountSchema>;
 
-export const createAccountSchema = accountSchema.omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-});
+export const createAccountSchema = accountSchema.partial();
 
 export type CreateAccount = z.infer<typeof createAccountSchema>;

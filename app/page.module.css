@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: baseline;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.block {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.button {
+  margin-left: 20px;
+  background: indianred;
+  color: wheat;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}

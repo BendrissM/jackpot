@@ -3,18 +3,19 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { CreateAccount } from "../schemas/account-schema";
 import { createAccount, getAccount } from "../lib";
+import { AccountId } from "../types/account";
+import { CreateAccount } from "../schemas/account-schema";
 
 const accountKeys = {
   all: ["accounts"] as const,
-  one: (id: string) => [...accountKeys.all, id] as const,
+  one: (id: AccountId) => [...accountKeys.all, id] as const,
 };
 
-export const useAccountQuery = (accountId: string) => {
+export const useAccountQuery = (accountId: AccountId) => {
   return useSuspenseQuery({
     queryKey: accountKeys.one(accountId),
-    queryFn: () => getAccount(accountId),
+    queryFn: () => (accountId ? getAccount(accountId) : null),
   });
 };
 
